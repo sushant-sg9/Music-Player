@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import Banner from "../assets/arjit.jpg";
-import { CheckCircle2, Search } from "lucide-react";
+import { CheckCircle2, Search, Music } from "lucide-react";
 
 const DraggableRow = ({ 
   song, 
@@ -56,7 +56,7 @@ const DraggableRow = ({
       <td className="py-2">
         {playing && playing.id === song.id ? (
           <div className="w-4 h-4 flex items-center justify-center">
-            <span className="block w-2 h-2 bg-white rounded-full" />
+                <Music />
           </div>
         ) : (
           <span className="text-gray-400 group-hover:hidden">
