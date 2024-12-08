@@ -10,6 +10,7 @@ const App = () => {
   const [songs, setSongs] = useState([]);
   const [currentSong, setCurrentSong] = useState();
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
 
   const getSpotifyToken = async () => {
@@ -87,12 +88,15 @@ const App = () => {
     setCurrentSongIndex(prevIndex);
     setCurrentSong(songs[prevIndex]);
   };
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   return (
     <div className="flex h-screen bg-gradient-to-r from-red-900 via-black to-gray-900 text-white">
-      <Sidebar />
+   <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
       <main className="flex-1 p-4 overflow-y-auto">
-        <SongList songs={songs} currentSong={currentSong} onSongClick={setCurrentSong} />
+        <SongList songs={songs} currentSong={currentSong} onSongClick={setCurrentSong}  onToggleSidebar={toggleSidebar} />
       </main>
       <Player
         currentSong={currentSong}
